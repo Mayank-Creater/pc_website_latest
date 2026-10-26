@@ -178,7 +178,7 @@ function validateMember(member, year) {
   if (!GENDER_SET.has(member.gender)) errors.gender = "Please select this member's gender.";
   if (!HOSTELLER_SET.has(member.hosteller)) errors.hosteller = 'Please tell us whether this member is a hosteller.';
 
-  errors.hackerrankProfile = validateProfile(member.hackerrankProfile.trim(), 'HackerRank', true);
+  errors.hackerrankProfile = validateProfile(member.hackerrankProfile.trim(), 'HackerRank', false);
   return errors;
 }
 
@@ -306,7 +306,7 @@ function MemberFields({ index, year, values, errors, onChange, onBlur }) {
       <SelectField id={idFor('branch')} name={nameFor('branch')} label="Branch" Icon={FaGraduationCap} value={values.branch} options={branchOptions} placeholder="Select branch" onChange={v => change('branch', v)} onBlur={() => blur('branch')} error={errors.branch} disabled={!year} />
       <SelectField id={idFor('gender')} name={nameFor('gender')} label="Gender" Icon={FaUser} value={values.gender} options={GENDER_OPTIONS} placeholder="Select gender" onChange={v => change('gender', v)} onBlur={() => blur('gender')} error={errors.gender} />
       <SelectField id={idFor('hosteller')} name={nameFor('hosteller')} label="Hosteller?" Icon={FaHome} value={values.hosteller} options={HOSTELLER_OPTIONS} placeholder="Select an option" onChange={v => change('hosteller', v)} onBlur={() => blur('hosteller')} error={errors.hosteller} />
-      <TextField id={idFor('hackerrankProfile')} name={nameFor('hackerrankProfile')} label="HackerRank Username" Icon={SiHackerrank} value={values.hackerrankProfile} onChange={v => change('hackerrankProfile', v)} onBlur={() => blur('hackerrankProfile')} error={errors.hackerrankProfile} hint="Contest submissions are linked to this username." placeholder="HackerRank username" autoComplete="off" maxLength={50} wide />
+      <TextField id={idFor('hackerrankProfile')} name={nameFor('hackerrankProfile')} label="HackerRank Username" Icon={SiHackerrank} value={values.hackerrankProfile} onChange={v => change('hackerrankProfile', v)} onBlur={() => blur('hackerrankProfile')} error={errors.hackerrankProfile} hint="Contest submissions are linked to this username." placeholder="HackerRank username" autoComplete="off" maxLength={50} wide optional />
     </div>
   );
 }
